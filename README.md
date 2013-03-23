@@ -1,4 +1,4 @@
-# Game Object System Experiment
+# Component-Based Game Object System Experiment
 
 This was an experiment to learn more about component-based game object systems.
 I also wanted an excuse to play with some of the new C++11 features!
