@@ -3,6 +3,8 @@
 This was an experiment to learn more about component-based game object systems.
 I also wanted an excuse to play with some of the new C++11 features!
 
+![screenshot](https://raw.github.com/surjikal/cbgos-experiment/master/screenshots/shooting-spaceships.png)
+
 
 # Dependencies
 
@@ -22,8 +24,10 @@ best to help you out.
 ## OSX
 
 1. Install glew: `brew install glew`
-2. In QT, create a new kit (File > Preferences > Build & Run), choose the GCC compiler
-   and set the `QT mkspec` to `macx-clang-libc++`
+2. In QT Creator:
+   a. Create a new kit (File > Preferences > Build & Run)
+   b. Choose GCC as the compiler
+   c. Set the `QT mkspec` to `macx-clang-libc++`
 
 
 # License
