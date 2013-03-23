@@ -1,0 +1,68 @@
+
+// The configuration file accepts any valid
+// javascript code.
+
+// Just place the game object types you want to
+// expose in the "GameObjects" list.
+
+// Try uncommenting some of the components!
+// Also, try changing the bullet speed.
+
+// Notes:
+// - Properties are not supported yet.
+// - Component arguments not fully supported yet.
+
+var SpaceShip = {
+    "name": "SpaceShip",
+    "properties": [
+    ],
+    "components": {
+        "ShootComponent": {
+            "projectileType": "Bullet",
+            // "projectileType": "SpaceShip",
+            "projectileSpeed": 3.0
+        },
+        "MovementComponent": {},
+        "OutOfBoundsComponent": {},
+        "WrapAroundComponent": {},
+        "PlayerGraphicsComponent": {},
+        "PlayerInputComponent": {},
+        "CollisionComponent": {},
+        // "BoundingBoxGraphicsComponent": {}
+    }
+};
+
+var Bullet = {
+    "name": "Bullet",
+    "properties": [
+    ],
+    "components": {
+        "MovementComponent": {},
+        "BulletGraphicsComponent": {},
+        "CollisionComponent": {},
+        // "OutOfBoundsComponent":{},
+        // "WrapAroundComponent":{}
+    }
+};
+
+
+var Asteroid = {
+    "name": "Asteroid",
+    "properties": [
+    ],
+    "components": {
+        "AsteroidGraphicsComponent": {},
+        "CollisionComponent": {},
+        "MovementComponent": {},
+        "OutOfBoundsComponent": {},
+        "WrapAroundComponent": {}
+    }
+};
+
+
+// Put the game object types you want to expose in here.
+GameObjects = [
+    SpaceShip,
+    Bullet,
+    Asteroid
+];

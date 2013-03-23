@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>game-objects.json</file>
+    </qresource>
+</RCC>
