@@ -24,10 +24,7 @@ best to help you out.
 ## OSX
 
 1. Install glew: `brew install glew`
-2. In QT Creator:
-   a. Create a new kit (File > Preferences > Build & Run)
-   b. Choose GCC as the compiler
-   c. Set the `QT mkspec` to `macx-clang-libc++`
+2. In QT Creator: Create a new kit (File > Preferences > Build & Run), Choose GCC as the compile, Set the `QT mkspec` to `macx-clang-libc++`
 
 
 # License
