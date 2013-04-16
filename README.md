@@ -33,7 +33,7 @@ If you need help with compilation, please open an issue on Github and I'll do my
 best to help you out.
 
 
-## OSX
+### OSX
 
 1. Install glew: `brew install glew`
 2. In QT Creator: Create a new kit (File > Preferences > Build & Run), Choose GCC as the compile, Set the `QT mkspec` to `macx-clang-libc++`
