@@ -9,18 +9,22 @@ read the paper [here](http://raw.github.com/surjikal/cbgos-experiment/master/doc
 This project contains a basic asteroids game, as well as a JavaScript interface for real-time manipulation
 of game objects!
 
+## Screenshots
+
+![initial](https://raw.github.com/surjikal/cbgos-experiment/master/screenshots/initial.png)
+
 ![screenshot](https://raw.github.com/surjikal/cbgos-experiment/master/screenshots/shooting-spaceships.png)
 
 The screenshot demontrates what happens when you tell the SpaceShip's `ShootComponent` to emit `SpaceShip`
 game objects instead of bullets.
 
-# Dependencies
+## Dependencies
 
 - QT 5
 - OpenGL & Glew
 
 
-# Compilation
+## Compilation
 
 I have compiled this on Gentoo, Windows 7 and OSX 10.8. That said, I always need
 to tweak either the project file or a couple of import paths.
