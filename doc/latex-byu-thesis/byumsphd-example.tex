@@ -1,0 +1,351 @@
+\documentclass[phd,electronic,twosidetoc,letterpaper,chaptercenter,parttop,lol,lof,lot]{byumsphd}
+% Author: Chris Monson
+%
+% This document is in the public domain
+%
+% Options for this class include the following (* indicates default):
+%
+%   phd (*) -- produce a dissertation
+%   ms -- produce a thesis
+%
+%   electronic -- default official university option, overrides the following:
+%                 - equalmargins
+%
+%   hardcopy -- overrides the following:
+%                 - no equalmargins
+%                 - twoside
+%
+%   letterpaper -- ignored, but helpful for the Makefile that I use
+%
+%   10pt -- 10 point font size
+%   11pt -- 11 point font size
+%   12pt (*) -- 12 point font size
+%
+%   lof -- produce a list of figures in the preamble (off)
+%   lot -- produce a list of tables in the preamble (off)
+%   lol -- produce a list of listings in the preamble (off)
+%
+%   layout -- show layout lines on the pages, helps with overfull boxes (off)
+%   grid -- show a half-inch grid on every page, helps with printing (off)
+%   separator -- print an extra instruction page between preamble and body (off)
+%
+%   twoside (*) -- two-sided output (margins alternate for odd and even pages,
+%     blank pages inserted to ensure that chapters begin on the right side of a
+%     bound copy, etc.)
+%   oneside -- one-sided output (margins are the same on all pages)
+%   equalmargins -- make all margins equal - ugly for binding, but compliant
+%
+%   twosidetoc - start two-sided margins at the TOC instead of the body.  This
+%     is sometimes (oddly) required, but be aware that it will make the page
+%     numbering seem screwy, e.g., the first four full sheets of paper will
+%     have number i-iv (not shown, though), and the next sheets will each have
+%     two numbers, one for each side.  I suspect that most people don't look at
+%     the roman numerals anyway, but it is a weird requirement.
+%
+%   openright (*) -- force new chapters to start on an odd page
+%   openany -- don't use this, it's ugly
+%
+%   prettyheadings -- make the section/chapter headings look nice
+%   compliantheadings (*) -- make them look ugly, but compliant with standards
+%
+%   chaptercenter -- center the chapter headings horizontally
+%   chapterleft (*) -- place chapter headings on the left
+%
+%   partmiddle -- Part headers are centered vertically, no other text on page
+%   parttop (*) -- Part headers at top of page, other text expected
+%
+%   duplexprinter -- Ensures that the two-sided portion starts on the right
+%     side when printing.  This is not for use in submission, since the best
+%     thing to do there is to print everything out one-sided, then take it down
+%     to the copy store to have them do the rest.  It does help to save trees
+%     when you are printing out copies just to look at them and fiddle with
+%     things.
+%
+%
+% EXAMPLES:
+%
+% The rest is up to you.  To fiddle with margins, use the \settextwidth and
+% \setbindingoffset macros, described below.  I suggest that you
+% \settextwidth{6.0in} for better-looking output (otherwise you'll get 3/4-inch
+% margins after binding, which is sort of weird).  This will depend on the
+% opinions of the various dean/coordinator folks, though, so be sure to ask
+% them before embarking on a major formatting task.
+
+% The following command fixes my particular printer, which starts 0.03 inches
+% too low, shifting the whole page down by that amount.  This shifts the
+% document content up so that it comes out right when printed.
+%
+% Discovering this sort of behavior is best done by specifying the ``grid''
+% option in the class parameters above.  It prints a 1/2 inch grid on every
+% page.  You can then use a ruler to determine exactly what the printer is
+% doing.
+%
+% Uncomment to shift content up (accounting for printer problems)
+%\setlength{\voffset}{-.03in}
+
+% Here we set things up for invisible hyperlinks in the document.  This makes
+% the electronic version clickable without changing the way that the document
+% prints.  It's useful, but optional.
+%
+% NOTE: "driverfallback=ps2pdf" chooses ps2pdf in the case of LaTeX and pdftex
+% in the case of pdflatex. If you use my LaTeX makefile (at
+% http://latex-makefile.googlecode.com/) then pdftex is the default There are
+% many other benefits to using the makefile, too.  This option is not always
+% available, so use with care.
+\usepackage[
+    bookmarks=true,
+    bookmarksnumbered=true,
+    breaklinks=false,
+    raiselinks=true,
+    pdfborder={0 0 0},
+    colorlinks=false,
+    plainpages=false,
+    ]{hyperref}
+
+% To fiddle with the margin settings use the below.  DO NOT change stuff
+% directly (like setting \textwidth) - it will break subtle things and you'll
+% be tearing your hair out.
+%
+% For example, if you want 1.5in equal margins, or 2in and 1in margins when
+% printing, add the following below:
+%
+%\setbindingoffset{1.0in}
+%\settextwidth{5.5in}
+%
+% When equalmargins is specified in the class options, the margins will be
+% equal at 1.5in each: (8.5 - 5.5) / 2.  When equalmargins is not specified,
+% the inner margin will be 2.0 and the outer margin will be 1.0: inner = (8.5 -
+% 5.5 - 1.0) / 2 + 1.0 (the 1.0 is the binding offset).
+%
+% The idea is this: you determine how much space the text is going to take up,
+% whether for an electronic document (equalmargins) or not.  You don't want the
+% layout shifting around between printed and electronic documents.
+%
+% So, you specify the text width.  Then, if there is a binding offset (when
+% binding your thesis, the binding takes up space - usually 0.5 inches), that
+% reduces the visual space on the final printed copy.  So, the *effective*
+% margins are calculated by reducing the page size by the binding offset, then
+% computing the remaining space and dividing by two.  Adding back in the
+% binding offset gives the inner margin.  The outer margin is just what's left.
+%
+% All of this is done using the geometry package, which should be manipulated
+% directly at your peril.  It's best just to use the above macros to manipulate
+% your margins.
+%
+% That said, using the geometry macro to set top and bottom margins, or
+% anything else vertical, is perfectly safe and encouraged, e.g.,
+%
+%\geometry{top=2.0in,bottom=2.0in}
+%
+% Just don't fiddle with horizontal margins this way.  You have been warned.
+
+% This makes hyperlinks point to the tops of figures, not their captions
+\usepackage[all]{hypcap}
+
+% These packages allow the bibliography to be sorted alphabetically and allow references to more than one paper to be sorted and compressed (i.e. instead of [5,2,4,6] you get [2,4-6])
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{hypernat}
+
+% Because I use these things in more than one place, I created new commands for
+% them.  I did not use \providecommand because I absolutely want LaTeX to error
+% out if these already exist.
+\newcommand{\Title}{BYU MS/PhD {\LaTeX} Class Dissertation Example}
+\newcommand{\Author}{Christopher K. Monson}
+\newcommand{\GraduationMonth}{March}
+\newcommand{\GraduationYear}{2006}
+
+% Set up the internal PDF information so that it becomes part of the document
+% metadata.  The pdfinfo command will display this.
+\hypersetup{%
+    pdftitle=\Title,%
+    pdfauthor=\Author,%
+    pdfsubject={PhD Dissertation, BYU CS Department: %
+                Degree Granted \GraduationMonth~\GraduationYear, Document Created \today},%
+    pdfkeywords={BYU, thesis, dissertation, LaTeX},%
+}
+
+% Rewrite the itemize, description, and enumerate environments to have more
+% reasonable spacing:
+\newcommand{\ItemSep}{\itemsep 0pt}
+\let\oldenum=\enumerate
+\renewcommand{\enumerate}{\oldenum \ItemSep}
+\let\olditem=\itemize
+\renewcommand{\itemize}{\olditem \ItemSep}
+\let\olddesc=\description
+\renewcommand{\description}{\olddesc \ItemSep}
+
+% Important settings for the byumsphd class.
+\title{\Title}
+\author{\Author}
+
+\committeechair{Esteem~D.~Adviser}
+\committeemembera{Has~A.~Thought}
+\committeememberb{Wants~A.~Change}
+\committeememberc{Attends~A.~Meeting}
+\committeememberd{Will~B.~Present}
+
+\monthgraduated{\GraduationMonth}
+\yeargraduated{\GraduationYear}
+\yearcopyrighted{\GraduationYear}
+
+\documentabstract{%
+This document is an example of how to use the byumsphd {\LaTeX} class file.  The class creates Ph.D. and Master's documents equally well, producing all appropriate preamble content and adhering precisely to the minimum formatting requirements.  It is meant to replace the old ECEn style file that has been circulating for many years.
+
+Note that there is a blank line between paragraphs, here.
+}
+
+\documentkeywords{%
+    Thesis template, poorly-crafted example, conflicting margin instructions
+}
+
+\acknowledgments{%
+    Thanks go to the ECEn style file authors for providing both a reasonable initial style and the motivation to abandon it.
+}
+
+\department{Computer~Science}
+\graduatecoordinator{Kent~E.~Seamons}
+\collegedean{Thomas~W.~Sederberg}
+\collegedeantitle{Associate~Dean}
+
+% Customize the name of the Table of Contents section.
+\renewcommand\contentsname{Table of Contents}
+
+% Remove all widows an orphans.  This is not normally recommended, but in a
+% paper dissertation there is no reasonable way around it; you can't exactly
+% rewrite already-published content to fix the problem.
+\clubpenalty 10000
+\widowpenalty 10000
+
+% Allow pages to have extra blank space at the bottom in order to accommodate
+% removal of widows and orphans.
+\raggedbottom
+
+% Produce nicely formatted paragraphs. There is nothing additional to do.  In
+% case you get some problems, surround your text with
+% \begin{sloppy} ... \end{sloppy}. If that does not work, try
+% \microtypesetup{protrusion=false} ... \microtypesetup{protrusion=true}
+\usepackage{microtype}
+
+\begin{document}
+
+% Produce the preamble
+\microtypesetup{protrusion=false}
+\maketitle
+\microtypesetup{protrusion=true}
+
+\chapter{Use of the ``byumsphd'' {\LaTeX} Class}
+
+To use this package, you must first declare it as your document class
+\begin{verbatim}
+    \documentclass[<options>]{byumsphd}
+\end{verbatim}
+then put the \verb|\maketitle| command at the beginning of your document and add the remaining content.  This class is meant to ensure that the last part really is the hard part; nobody wants to go through years of research and hard work only to discover that their margins are next to impossible to get right.
+
+The class declaration is, of course, not all that is required.  Several things must be specified in the preamble of your document before the appropriate preface material can be generated.  Each of these is discussed within its own section.
+
+\section{Class Options}
+
+This class has several options that affect document output in various ways.  These are described in detail here.
+
+\begin{itemize}
+    \item Document Type:
+        \begin{itemize}
+            \item \textbf{phd (default)}: Produce a dissertation
+            \item \textbf{ms} Produce a thesis
+            \item \textbf{electronic}: Make an ETD (sets equalmargins, oneside)
+            \item \textbf{hardcopy}: Make bindable (sets no equalmargins, twoside)
+        \end{itemize}
+\pagebreak
+    \item Font Size:
+        \begin{itemize}
+            \item \textbf{10pt}
+            \item \textbf{11pt}
+            \item \textbf{12pt (default)}
+        \end{itemize}
+    \item Preamble Settings:
+        \begin{itemize}
+            \item \textbf{lot}: Produce a List of Tables (default off)
+            \item \textbf{lof}: Produce a List of Figures (default off)
+            \item \textbf{lol}: Produce a List of Listings (default off)
+        \end{itemize}
+    \item Page Formatting:
+        \begin{itemize}
+            \item \textbf{equalmargins}: Make all margins equal - no binding offset
+            \item \textbf{twoside (default)}: Alternate margins for even and odd pages
+            \item \textbf{oneside}: One-sided document - margins don't alternate
+            \item \textbf{twosidetoc}: Start two-sided margins at the TOC, don't wait for the document body and arabic numerals to do it.  This is a strange requirement that I have seen in some places, especially strange since it means that the page numbering will change suddenly in the middle of the roman numerals (the first four full sheets might have numbers i-iv, but not printed, and the next sheets will each have two page numbers; most people probably won't notice, but it's still a weird requirement).
+            \item \textbf{openright (default)}: Chapters start on an odd page
+            \item \textbf{openany}: Chapters start anywhere (tip: don't use this)
+            \item \textbf{duplexprinter}: If printing two-sided (to save trees while evaluating the state of things, for example), this ensures that a blank page is printed when necessary between the front matter and the first chapter, ensuring that the first chapter starts on the front of a sheet (the right side).  It is important to note that you should \emph{not} plan on using this to generate the final document.  Paper that is required for theses is typically much heavier and more opaque than paper you are going to have in your department printer.  Print everything one-sided so that text from the back of a page doesn't bleed through when getting copied for the final draft.  Here is how I suggest you print the final draft:
+              \begin{itemize}
+                \item Print the entire document \emph{without} this option (but \emph{with} the twoside option so that page margins alternate correctly).
+                \item Take it to the copy center and say the word "thesis" to someone behind the counter.
+                \item Show her the front matter and say "one-sided".  A sticky note is likely to be applied.
+                \item Show her the rest and say "two-sided".
+                \item Smile: she has your baby in her hands.
+                \item Pay and wait until it's done.
+              \end{itemize}
+        \end{itemize}
+    \item Miscellaneous Layout:
+        \begin{itemize}
+            \item \textbf{prettyheadings (default)}: Allow larger font sizes for chapter, part, and section headings.  If you can get away with it, use this.
+            \item \textbf{compliantheadings}: Use the same font size for everything -- ugly, but compliant with the minimum style requirements.
+            \item \textbf{simplechapterheading}: Chapter headings are "simple", meaning that they are of the format "1 Title" instead of "Chapter 1(newline)Title".
+            \item \textbf{chapterleft (default)}: Chapter headings are left justified
+            \item \textbf{chaptercenter}: Chapter headings are centered
+            \item \textbf{partmiddle (default)}: Part headings are vertically centered
+            \item \textbf{parttop}: Part headings are near the top of the page, appropriate if each part contains introductory text.
+        \end{itemize}
+\pagebreak
+    \item Visualization Aids (all default to off):
+        \begin{itemize}
+            \item \textbf{layout}: Display dotted lines for help with layouts.  Shows the margins (helpful for finding overfull hboxes, etc.)
+            \item \textbf{grid}: Display a \( 1/2 \)-inch grid on every page.  When printing your document, use this on one of the pages to find out whether the printer shifts things down or not.  My printer shifts everything down by \( 0.03 \) inches, which doesn't sound like a lot, but can make a huge difference, especially considering that paper is not actually \( 8 1/2 \) by \( 11 \), but a little smaller than that in each dimension.
+            \item \textbf{separator}: Output an extra instruction page in between the preamble and the body of the document.  Even if the document is two-sided, the preamble \emph{never} is, so this page reminds you or the printing service that this is the case while giving appropriate instructions for the remainder of the document.  It \emph{will not print} if the document is all one-sided (there's no point, really), and it should \emph{never} be included in your final copies of the document, but discarded during printing.  If it is not discarded, it is probably harmless since you can just throw it away after getting copies made.
+        \end{itemize}
+\end{itemize}
+
+\section{Preamble Setup Commands}
+
+In order to produce a correct preamble, several things must be set, and others can optionally be added.  The settings described next affect the behavior of \verb|\maketitle|.  These are required:
+\begin{itemize}
+    \item \verb|\title{<your document title>}|
+    \item \verb|\committeechair{<your adviser's name>}|
+    \item \verb|\committeemembera{<second member>}|
+    \item \verb|\committeememberb{<third member>}|
+    \item \verb|\committeememberc{<fourth member (PhD only)>}|
+    \item \verb|\committeememberd{<fifth member (PhD only)>}|
+    \item \verb|\monthgraduated{<month of graduation>}|
+    \item \verb|\yeargraduated{<hopefully this year>}|
+    \item \verb|\documentabstract{<your thesis abstract goes here>}|
+\end{itemize}
+The following are optional or have defaults suitable for CS majors:
+\begin{itemize}
+    \item \verb|\yearcopyrighted{<defaults to year graduated>}|
+    \item \verb|\acknowledgments{<the text of your acknowledgments goes here>}|
+    \item \verb|\university{<default: Brigham Young University>}|
+    \item \verb|\department{<default: Computer Science>}|
+    \item \verb|\graduatecoordinator{<default: Parris K. Egbert>}|
+    \item \verb|\college{<default: Physical and Mathematical Sciences>}|
+    \item \verb|\collegedean{<default: Thomas W. Sederberg>}|
+    \item \verb|\collegedeantitle{<default: Associate Dean>}|
+    \item \verb|\settextwidth{<default: 6in>}|
+    \item \verb|\setbindingoffset{<default: 0.5in (for non-equalmargins)>}|
+\end{itemize}
+
+\chapter{Parting Shots}
+
+If you are interested in getting a handle on what the class is doing, read the source; it is heavily commented and frankly one of the easiest-to-understand classes I have ever seen.  It uses a minimum of deep {\TeX} trickery to accomplish its designs.
+
+If you would like an enhancement made to it, you are welcome to do it yourself or to contact the author; information is available in the class file comments.  License information is also available there, but boils down to basically this: you can do what you like with this file, but if you change it, change the name.  If you have a change that you think belongs in the main distribution, contact the author and it will most likely be included in the official class file.
+
+Please enjoy, and note all kinds of feedback are welcome, especially the kinds that involve deposits into the author's bank account.
+
+\nocite{testentry}
+
+\bibliographystyle{plainnat}
+\bibliography{bib}
+
+\end{document}
+
+% vim: lbr
