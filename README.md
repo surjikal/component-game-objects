@@ -8,6 +8,8 @@ of game objects!
 
 ![screenshot](https://raw.github.com/surjikal/cbgos-experiment/master/screenshots/shooting-spaceships.png)
 
+The screenshot demontrates what happens when you tell the SpaceShip's `ShootComponent` to emit `SpaceShip`
+game objects instead of bullets.
 
 # Dependencies
 
