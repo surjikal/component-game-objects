@@ -3,6 +3,9 @@
 This was an experiment to learn more about component-based game object systems.
 I also wanted an excuse to play with some of the new C++11 features!
 
+If you want to learn more about the awesomeness of component-based game object systems,
+read the paper [here](http://raw.github.com/surjikal/cbgos-experiment/master/doc/nicolasporter-cbgos-paper.pdf)!
+
 This project contains a basic asteroids game, as well as a JavaScript interface for real-time manipulation
 of game objects!
 
